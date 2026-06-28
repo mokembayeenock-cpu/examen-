@@ -1,0 +1,15 @@
+# .htaccess pour Render
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+</IfModule>
+
+DirectoryIndex index.php
+
+# Protéger les dossiers sensibles
+<IfModule mod_rewrite.c>
+    RewriteRule ^includes/ - [F,L]
+    RewriteRule ^database/ - [F,L]
+</IfModule>
