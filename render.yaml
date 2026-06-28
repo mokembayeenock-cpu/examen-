@@ -1,0 +1,30 @@
+# render.yaml
+services:
+  - type: web
+    name: plateforme-examens
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: plateforme-db
+          property: host
+      - key: DB_NAME
+        fromDatabase:
+          name: plateforme-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: plateforme-db
+          property: user
+      - key: DB_PASS
+        fromDatabase:
+          name: plateforme-db
+          property: password
+
+databases:
+  - name: plateforme-db
+    plan: free
+    databaseName: plateforme_examens
+    user: admin_examens
